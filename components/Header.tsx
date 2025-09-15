@@ -136,40 +136,43 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
-          <div className="flex-1 flex flex-col items-center justify-center px-6 pt-12 pb-32">
-            <nav className="flex flex-col items-center space-y-6 text-lg w-full">
+          <div className="pt-6 pb-2 px-6 flex flex-col items-center">
+            <a href="#/" onClick={handleNavigate('#/')} className="w-40 mb-4">
+              <WhalefinLogo />
+            </a>
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-start px-6 pt-2 pb-4 overflow-y-auto">
+            <nav className="flex flex-col items-center space-y-4 w-full">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.path}
                   onClick={handleNavigate(item.path)}
-                  className={`px-5 py-2 text-2xl transition-all duration-300 rounded-full w-full text-center ${currentPath === item.path ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
+                  className={`px-5 py-2 text-xl transition-all duration-300 rounded-full w-full text-center ${currentPath === item.path ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
-          </div>
-          <div className="w-full px-8 pb-8">
-            {isAuthenticated ? (
-              <div className="text-center border-t border-white/10 pt-6">
-                <div className="flex flex-col items-center justify-center mb-4">
-                  <p className="font-bold text-white text-center">{user.username}</p>
-                  <p className="text-sm text-gray-400 text-center mb-2">{user.email}</p>
+            {isAuthenticated && (
+              <div className="w-full mt-8 pt-4 border-t border-white/10">
+                <div className="flex flex-col items-center mb-2">
+                  <p className="font-bold text-white text-center text-base">{user.username}</p>
+                  <p className="text-xs text-gray-400 text-center mb-2">{user.email}</p>
                 </div>
-                <div className="mt-6 mb-2">
-                  <hr className="border-white/10 mb-4" />
-                  <p className="text-lg font-bold text-white mb-2">SETTINGS</p>
+                <div className="mb-2">
+                  <p className="text-base font-bold text-white mb-2">SETTINGS</p>
                 </div>
-                <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-3 mb-3 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
+                <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-2 mb-2 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
                   Edit Profile
                 </a>
-                <button onClick={handleSignOut} className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20 mt-2">
+                <button onClick={handleSignOut} className="w-full py-2 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20 mt-1">
                   Sign Out
                 </button>
               </div>
-            ) : (
-              <a href="#/signin" onClick={(e) => { e.preventDefault(); window.location.hash = '/signin'; setIsMenuOpen(false); }} className="block text-center mt-8 px-8 py-4 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-[0_0_20px_rgba(100,180,255,0.15)] hover:border-white/20 hover:shadow-[0_0_25px_rgba(100,180,255,0.25)]">
+            )}
+            {!isAuthenticated && (
+              <a href="#/signin" onClick={(e) => { e.preventDefault(); window.location.hash = '/signin'; setIsMenuOpen(false); }} className="block text-center mt-8 px-8 py-3 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-[0_0_20px_rgba(100,180,255,0.15)] hover:border-white/20 hover:shadow-[0_0_25px_rgba(100,180,255,0.25)]">
                 SIGN IN
               </a>
             )}
