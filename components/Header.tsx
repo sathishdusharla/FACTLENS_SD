@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
-          <div className="flex-1 flex flex-col items-center justify-start px-6 pt-2 pb-4 overflow-y-auto">
+          <div className="flex-1 flex flex-col items-center justify-center px-6 pb-4 overflow-y-auto">
             <nav className="flex flex-col items-center space-y-4 w-full">
               {navItems.map((item) => (
                 <a
