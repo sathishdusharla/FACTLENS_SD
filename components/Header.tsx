@@ -164,20 +164,8 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#060c1f]/95 backdrop-blur-xl z-40 flex flex-col animate-fade-in">
-          {/* Top: Logo + Close */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-            <WhalefinLogo />
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2"
-              aria-label="Close Menu"
-            >
-              <XIcon className="w-6 h-6 text-white" />
-            </button>
-          </div>
-
           {/* Nav Items */}
-          <nav className="flex flex-col items-center space-y-6 w-full px-6 mt-8 flex-1">
+          <nav className="flex flex-col items-center space-y-6 w-full px-6 mt-12 flex-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
