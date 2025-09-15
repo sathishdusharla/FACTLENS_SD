@@ -136,7 +136,6 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
-          {/* Removed duplicate FactLens logo from mobile sidebar */}
           <div className="flex-1 flex flex-col items-center justify-start px-6 pt-2 pb-4 overflow-y-auto">
             <nav className="flex flex-col items-center space-y-4 w-full">
               {navItems.map((item) => (
@@ -156,7 +155,6 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
                   <p className="font-bold text-white text-center text-base">{user.username}</p>
                   <p className="text-xs text-gray-400 text-center mb-2">{user.email}</p>
                 </div>
-                {/* Removed extra SETTINGS label above Edit Profile */}
                 <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-2 mb-2 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
                   Edit Profile
                 </a>
