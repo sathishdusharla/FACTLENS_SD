@@ -69,6 +69,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
   return (
     <>
       <header className="flex items-center justify-between w-full mb-12">
+        {/* Logo (only here, not inside sidebar) */}
         <a href="#/" onClick={handleNavigate('#/')} className="w-40 z-50">
           <WhalefinLogo />
         </a>
@@ -163,11 +164,8 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
-          {/* Top Row: Logo + Close */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-            <a href="#/" onClick={handleNavigate('#/')} className="w-32">
-              <WhalefinLogo />
-            </a>
+          {/* Close Button only */}
+          <div className="flex justify-end px-6 py-4 border-b border-white/10">
             <button
               onClick={() => setIsMenuOpen(false)}
               className="p-2"
