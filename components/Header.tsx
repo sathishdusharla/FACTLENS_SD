@@ -135,41 +135,43 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
       
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col items-center justify-center animate-fade-in">
-            <nav className="flex flex-col items-center space-y-6 text-lg">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    onClick={handleNavigate(item.path)}
-                    className={`px-5 py-2 text-2xl transition-all duration-300 rounded-full ${currentPath === item.path ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-            </nav>
-             <div className="absolute bottom-10 w-full px-8">
-              {isAuthenticated ? (
-                  <div className="text-center border-t border-white/10 pt-6">
-          <div className="flex flex-col items-center justify-center mb-4">
-            <div>
-              <p className="font-bold text-white text-center">{user.username}</p>
-              <p className="text-sm text-gray-400 text-center">{user.email}</p>
-            </div>
-          </div>
-                    <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-3 mb-3 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
-                      Edit Profile
-                    </a>
-                    <button onClick={handleSignOut} className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20">
-                        Sign Out
-                    </button>
-                  </div>
-              ) : (
-                <a href="#/signin" onClick={(e) => { e.preventDefault(); window.location.hash = '/signin'; setIsMenuOpen(false); }} className="block text-center mt-8 px-8 py-4 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-[0_0_20px_rgba(100,180,255,0.15)] hover:border-white/20 hover:shadow-[0_0_25px_rgba(100,180,255,0.25)]">
-                    SIGN IN
+        <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
+          <div className="flex-1 flex flex-col items-center justify-center px-6 pt-12 pb-32">
+            <nav className="flex flex-col items-center space-y-6 text-lg w-full">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  onClick={handleNavigate(item.path)}
+                  className={`px-5 py-2 text-2xl transition-all duration-300 rounded-full w-full text-center ${currentPath === item.path ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
+                >
+                  {item.name}
                 </a>
-              )}
-            </div>
+              ))}
+            </nav>
+          </div>
+          <div className="w-full px-8 pb-8">
+            {isAuthenticated ? (
+              <div className="text-center border-t border-white/10 pt-6">
+                <div className="flex flex-col items-center justify-center mb-4">
+                  <div>
+                    <p className="font-bold text-white text-center">{user.username}</p>
+                    <p className="text-sm text-gray-400 text-center">{user.email}</p>
+                  </div>
+                </div>
+                <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-3 mb-3 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
+                  Edit Profile
+                </a>
+                <button onClick={handleSignOut} className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20">
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <a href="#/signin" onClick={(e) => { e.preventDefault(); window.location.hash = '/signin'; setIsMenuOpen(false); }} className="block text-center mt-8 px-8 py-4 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-[0_0_20px_rgba(100,180,255,0.15)] hover:border-white/20 hover:shadow-[0_0_25px_rgba(100,180,255,0.25)]">
+                SIGN IN
+              </a>
+            )}
+          </div>
         </div>
       )}
     </>
