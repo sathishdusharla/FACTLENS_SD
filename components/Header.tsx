@@ -154,15 +154,17 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
             {isAuthenticated ? (
               <div className="text-center border-t border-white/10 pt-6">
                 <div className="flex flex-col items-center justify-center mb-4">
-                  <div>
-                    <p className="font-bold text-white text-center">{user.username}</p>
-                    <p className="text-sm text-gray-400 text-center">{user.email}</p>
-                  </div>
+                  <p className="font-bold text-white text-center">{user.username}</p>
+                  <p className="text-sm text-gray-400 text-center mb-2">{user.email}</p>
+                </div>
+                <div className="mt-6 mb-2">
+                  <hr className="border-white/10 mb-4" />
+                  <p className="text-lg font-bold text-white mb-2">SETTINGS</p>
                 </div>
                 <a href="#/profile" onClick={handleNavigate('#/profile')} className="block w-full text-center py-3 mb-3 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20">
                   Edit Profile
                 </a>
-                <button onClick={handleSignOut} className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20">
+                <button onClick={handleSignOut} className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20 mt-2">
                   Sign Out
                 </button>
               </div>
