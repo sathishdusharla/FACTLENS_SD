@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
   return (
     <>
       <header className="flex items-center justify-between w-full mb-12">
-        {/* Logo (only here, not inside sidebar) */}
+        {/* Logo */}
         <a href="#/" onClick={handleNavigate('#/')} className="w-40 z-50">
           <WhalefinLogo />
         </a>
@@ -163,9 +163,10 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#060c1f]/90 backdrop-blur-lg z-40 flex flex-col animate-fade-in">
-          {/* Close Button only */}
-          <div className="flex justify-end px-6 py-4 border-b border-white/10">
+        <div className="md:hidden fixed inset-0 bg-[#060c1f]/95 backdrop-blur-xl z-40 flex flex-col animate-fade-in">
+          {/* Top: Logo + Close */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+            <WhalefinLogo />
             <button
               onClick={() => setIsMenuOpen(false)}
               className="p-2"
@@ -176,13 +177,13 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
           </div>
 
           {/* Nav Items */}
-          <nav className="flex flex-col items-center space-y-4 w-full px-6 mt-6 flex-1 overflow-y-auto">
+          <nav className="flex flex-col items-center space-y-6 w-full px-6 mt-8 flex-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.path}
                 onClick={handleNavigate(item.path)}
-                className={`px-5 py-2 text-xl transition-all duration-300 rounded-full w-full text-center ${
+                className={`px-6 py-2 text-lg font-semibold rounded-full transition-all duration-300 ${
                   currentPath === item.path
                     ? 'bg-white/10 text-white'
                     : 'text-gray-300 hover:bg-white/10 hover:text-white'
@@ -196,19 +197,19 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
           {/* Footer with Profile / Sign In */}
           <div className="px-6 pb-6 border-t border-white/10">
             {isAuthenticated ? (
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mt-4">
                 <p className="font-bold text-white text-center text-base">{user.username}</p>
-                <p className="text-xs text-gray-400 text-center mb-3">{user.email}</p>
+                <p className="text-xs text-gray-400 text-center mb-4">{user.email}</p>
                 <a
                   href="#/profile"
                   onClick={handleNavigate('#/profile')}
-                  className="block w-full text-center py-2 mb-2 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/10 hover:bg-white/20"
+                  className="w-full text-center py-3 mb-3 text-base font-semibold text-white transition-all duration-300 border border-white/20 rounded-full bg-white/5 hover:bg-white/10"
                 >
                   Edit Profile
                 </a>
                 <button
                   onClick={handleSignOut}
-                  className="w-full py-2 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 backdrop-blur-sm hover:bg-red-500/20"
+                  className="w-full py-3 text-base font-semibold text-red-400 transition-all duration-300 border border-red-400/20 rounded-full bg-red-500/10 hover:bg-red-500/20"
                 >
                   Sign Out
                 </button>
@@ -221,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, isAuthenticated, onSignOut
                   window.location.hash = '/signin';
                   setIsMenuOpen(false);
                 }}
-                className="block text-center mt-4 px-8 py-3 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-[0_0_20px_rgba(100,180,255,0.15)] hover:border-white/20 hover:shadow-[0_0_25px_rgba(100,180,255,0.25)]"
+                className="block text-center mt-4 px-8 py-3 text-base font-semibold text-white transition-all duration-300 border border-white/10 rounded-full bg-white/5 hover:bg-white/10"
               >
                 SIGN IN
               </a>
